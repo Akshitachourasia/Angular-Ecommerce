@@ -1,0 +1,52 @@
+{
+  "sellers": [
+    {
+      "id": "de4f",
+      "name": "Akshita Chourasia",
+      "email": "abc@gmail.com",
+      "password": "abc@123"
+    },
+    {
+      "id": "9fb1",
+      "name": "Henry",
+      "email": "abc@gmail.com",
+      "password": "abc@123"
+    },
+    {
+      "id": "b278",
+      "name": "Nihar",
+      "email": "Nihar@gmail.com",
+      "password": "abc@123"
+    },
+    {
+      "id": "34ff",
+      "name": "dfghnfgh",
+      "password": "dfghncfgh",
+      "email": "9060@gmail.com"
+    },
+    {
+      "id": "c1b7",
+      "name": "drbghdf",
+      "password": "drbhdf",
+      "email": "12345@gmail.com"
+    },
+    {
+      "id": "c4bf",
+      "name": "fghjfgh",
+      "password": " uiolyuijkh",
+      "email": "12345@gmail.com"
+    },
+    {
+      "id": "52c9",
+      "name": "tom",
+      "password": "rthfgdbv",
+      "email": "9060@gmail.com"
+    },
+    {
+      "id": "f068",
+      "name": "hello",
+      "password": "sdfhfgnjh",
+      "email": "9060@gmail.com"
+    }
+  ]
+}
