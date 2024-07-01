@@ -24,35 +24,13 @@
       "password": "dfghf",
       "email": "9060@gmail.com"
     },
-    {
-      "id": "86eb",
-      "name": "tom",
-      "password": "tmjkghj",
-      "email": "9060@gmail.com"
-    },
+  
     {
       "id": "2631",
       "name": "hello",
       "password": "he3lklo",
       "email": "user1@gmail.com"
-    },
-    {
-      "id": "db6b",
-      "name": "etghdrtbg",
-      "password": "gjmhgjm",
-      "email": "user1@gmail.com"
-    },
-    {
-      "id": "5e2f",
-      "name": "",
-      "password": "",
-      "email": ""
-    },
-    {
-      "id": "2713",
-      "name": "",
-      "password": "",
-      "email": ""
     }
+  
   ]
 }

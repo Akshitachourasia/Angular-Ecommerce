@@ -15,6 +15,7 @@ export class SellerAuthComponent {
   constructor(private seller: SellersService, private router: Router) {
   }  //service name
   showLogin = false
+  authError : string ="" 
 ngOnInit(): void {  
   this.seller.reloadSeller()
 }
@@ -23,8 +24,14 @@ ngOnInit(): void {
     this.seller.userSignUp(data)
   }
   login(data: any) {
-    console.log(data);
-
+    this.authError = ""
+    // console.log(data);
+ this.seller.userLogin(data)
+ this.seller.isLoginError.subscribe((isError) => {
+   if (isError) {
+     this.authError = "Email or password is not correct"
+   } 
+ })
   }
   openLogin() {
 this.showLogin = true;

@@ -2,12 +2,10 @@
 body{
     font-family: sans-serif;
 }
-
 .container{
     margin-left: 5% ;
     margin-right: 5%;
 }
-
 .form{
    text-align: center;
    display: flex;
@@ -15,7 +13,6 @@ body{
    flex-direction: column;
    width: 300px;
 }
-
 .input{
     height: 35px;
     margin-bottom: 20px;
@@ -23,9 +20,11 @@ body{
     border: 1px solid blueviolet;
     color: blueviolet;
 }
-
 .signup-btn{
     height: 35px;
     border:1px solid blueviolet;
     cursor: pointer;
+}
+.error{
+    color: red;
 }
