@@ -33,20 +33,58 @@
   ],
   "products": [
     {
-      "id": "408d",
-      "name": "Premium Design & Display: Experience the iconic design heritage of Galaxy S23, specially crafted for all passionate Galaxy fans. It hosts a floating camera design, premium metal finishing & a smaller camera hole. Camera: Experience Galaxy S23 FE’s cutting edge camera. All of your photos and videos can be epic when you use the various pro-grade features. You’ll see the difference for yourself with its epic nightography (night photos & videos), incredible details & pro-grade features. Performance: S23 FE offers a better & smoother gaming experience with powerful performance, intelligent display & long-lasting battery.",
-      "price": "37370",
-      "color": "Mint",
+      "id": "bdd9",
+      "name": "Redmi Note ",
+      "price": "16,999",
+      "color": "Arctic White",
       "category": "Mobile",
-      "image": "https://www.amazon.in/SAMSUNG-Galaxy-S23-Mint-Storage/dp/B0CJXPYJC3/ref=sr_1_15?crid=1TO3GXB70MQ5Y&dib=eyJ2IjoiMSJ9.NHIho56AH7puEd1nyPhxzqKXGEilEGpNAN1zLTkks_5-sS3nB0mtXjw0HTCx2XepjosEZ2Ab7Kj1OA8DO8pC6SCoOpmW3oPbxXNjePggiXEWAged-VfagMi4aLFSXtbJ777WFPtMnfDJCzC56jfcxDiooGyd8RnsYL3FIZIPTBMHdTfUO-yLJvR2i9oNUQA4A3ZQN3T7sF7xnc5hXq7cJqnK8D8ksZicrALpiTg1OLU.DVz0RMUBUDf2MlTgLOk2tAlltSiUaAb1X2aTZ_Wrqlg&dib_tag=se&keywords=samsung&qid=1719839783&sprefix=samsun%2Caps%2C201&sr=8-15"
+      "description": "Mediatek Dimensity 6080 6nm Octa-core 5G processor for high performance ; Up to 2.4GHz; Upto 12GB RAM including 6GB Virtual RAM",
+      "image": "https://m.media-amazon.com/images/I/71VW8LmqqPL._SL1500_.jpg"
     },
     {
-      "id": "09fb",
-      "name": "Camera: Sensor: 50MP Main Camera with Sony IMX890 (OIS supported), 8MP Ultrawide Camera (FOV: 120 degree) and Macro Lens; 16MP Front (Selfie) Camera with EIS support.\nCamera Modes: Nightscape, Ultra HDR, Smart Scene Recognition, Portrait Mode, Pro Mode, Panorama, Tilt-Shift mode, Long Exposure, Dual-View Video, Retouch, Movie Mode, Raw file, Filters, Super Stable, Video Nightscape, Video HDR, Video Portrait, Focus Tracking, Timelapse, Macro mode\nDisplay: 6.7 Inches; 120 Hz Super Fluid AMOLED; Resolution: 2772 X 1240 pixels ,450 ppi, 20.1:9, 10-bit Color Depth, HDR10+\nOperating System: OxygenOS based on Android 13\nProcessor: Snapdragon 8+ Gen 1 Mobile Platform",
-      "price": "29999",
-      "color": "Galactic Silver",
+      "id": "3df0",
+      "name": "Apple iPhone 15 ",
+      "price": "71,900",
+      "color": "Black",
       "category": "Mobile",
-      "image": "https://www.amazon.in/OnePlus-Galactic-Silver-128GB-Storage/dp/B0BSNQ2KXF/ref=sr_1_1?crid=2777075CXOZ2M&dib=eyJ2IjoiMSJ9.kUViREi6UpBe7pCPChBBvNz7RsW6OSSji08Na1EcsR9phDiRJsqqHEclfJJunDd-1FcqC7ZqH7nb_S3b4X3cD1ZePPpVsf39nS85CVgn7m0UZo6eleqibmXCEKIzgzkJdABohw2UdWolISXt0ftVUuQKZhQYK7XbxEwB_ZJBcNh5jIqjAFfaxadNLeoJzBKlgys5WAfnSqCEZ28kwvfpHaGHWvVShf408s_Ws5ZYUyw.XzGIfu5QlHhU-VuY91rUqRqii4lzJzMBIvIfhVAEpv8&dib_tag=se&keywords=oneplus%2B11r&qid=1719840870&sprefix=one%2Caps%2C210&sr=8-1&th=1"
+      "description": "Capture portraits with dramatically more detail and color. Just tap to shift the focus between subjects — even after you take the shot.",
+      "image": "https://m.media-amazon.com/images/I/71657TiFeHL._SL1500_.jpg"
+    },
+    {
+      "id": "5475",
+      "name": "realme NARZO ",
+      "price": "12,499",
+      "color": "Amber Gold",
+      "category": "Mobile",
+      "description": "realme NARZO N65 5G (Amber Gold 6GB RAM, 128GB Storage) India's 1st D6300 5G Chipset | Ultra Slim Design | 120Hz Eye Comfort Display | 50MP AI Camera| Charger in The box",
+      "image": "https://m.media-amazon.com/images/I/71ocQY+G2XL._SL1500_.jpg"
+    },
+    {
+      "id": "3f11",
+      "name": "OnePlus Nord",
+      "price": "12,499",
+      "color": "blue",
+      "category": "Mobile",
+      "description": "OnePlus Nord CE4 Lite 5G (Mega Blue, 8GB RAM, 128GB Storage)",
+      "image": "https://m.media-amazon.com/images/I/5155PFA2N+L._SL1013_.jpg"
+    },
+    {
+      "id": "d978",
+      "name": "Apple iPhone 13",
+      "price": "77,900",
+      "color": "Midnight",
+      "category": "Mobile",
+      "description": "Cinematic mode adds shallow depth of field and shifts focus automatically in your videos",
+      "image": "https://m.media-amazon.com/images/I/61VuVU94RnL._SL1500_.jpg"
+    },
+    {
+      "id": "3947",
+      "name": "Motorola Edge",
+      "price": "25,600",
+      "color": "Marshmallow Blue",
+      "category": "Mobile",
+      "description": "Motorola Edge 50 Fusion 5G (Marshmallow Blue, 8GB RAM, 128GB Storage)",
+      "image": "https://m.media-amazon.com/images/I/71XZP2Hm+5L._SL1500_.jpg"
     }
   ]
 }

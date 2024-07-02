@@ -21,7 +21,7 @@ ngOnInit(): void {
        if (localStorage.getItem('seller')) {
         let sellerStore = localStorage.getItem('seller')
         let sellarData = sellerStore && JSON.parse(sellerStore)[0]
-        console.log(sellarData.name,"lllllllllllllllllllllllll")
+        console.log(sellarData,"data")
         this.sellerName = sellarData.name
       
       }
