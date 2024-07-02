@@ -1,5 +1,6 @@
 <div class="add-product">
-    <h1>Update Product</h1>
+    <h1 class="product">Update Product</h1>
+    <p class="message">{{productMessage}}</p>
     <form #addProduct="ngForm" (ngSubmit)="submit(addProduct.value)" class="form" >
       <input class="input" type="text" name="name" placeholder="Enter Product Name" ngModel="{{productData?.name}}" />
       <input class="input" type="text" name="price" placeholder="Enter Product Price" ngModel="{{productData?.price}}" />

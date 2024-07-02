@@ -51,22 +51,22 @@
       "image": "https://m.media-amazon.com/images/I/71657TiFeHL._SL1500_.jpg"
     },
     {
-      "id": "3f11",
       "name": "OnePlus Nord",
-      "price": "12,499",
+      "price": "13,499",
       "color": "blue",
       "category": "Mobile",
       "description": "OnePlus Nord CE4 Lite 5G (Mega Blue, 8GB RAM, 128GB Storage)",
-      "image": "https://m.media-amazon.com/images/I/5155PFA2N+L._SL1013_.jpg"
+      "image": "https://m.media-amazon.com/images/I/5155PFA2N+L._SL1013_.jpg",
+      "id": "3f11"
     },
     {
-      "id": "d978",
       "name": "Apple iPhone 13",
-      "price": "77,900",
+      "price": "79,900",
       "color": "Midnight",
       "category": "Mobile",
       "description": "Cinematic mode adds shallow depth of field and shifts focus automatically in your videos",
-      "image": "https://m.media-amazon.com/images/I/61VuVU94RnL._SL1500_.jpg"
+      "image": "https://m.media-amazon.com/images/I/61VuVU94RnL._SL1500_.jpg",
+      "id": "d978"
     },
     {
       "id": "3997",

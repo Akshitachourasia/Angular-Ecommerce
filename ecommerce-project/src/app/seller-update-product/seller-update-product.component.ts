@@ -12,6 +12,7 @@ import { ProductService } from '../services/product.service';
   styleUrl: './seller-update-product.component.css'
 })
 export class SellerUpdateProductComponent {
+  productMessage: string|undefined;
   constructor( private route: ActivatedRoute , private Product : ProductService) { }
   productData: Product | undefined
 ngOnInit(): void {
@@ -21,10 +22,20 @@ ngOnInit(): void {
     console.log(data)
   })
 
-
-
 }
 submit(product: Product) {
-  console.log(product)
+  if (this.productData) {
+    product.id = this.productData.id
+    this.Product.updateProduct(product).subscribe((result) => {
+      if (result) {
+        this.productMessage = "Product updated successfully"
+        console.log(result)
+      }
+    })
+  }
+  setTimeout(() => {
+    this.productMessage = undefined
+  }, 3000)
 }
+
 }
