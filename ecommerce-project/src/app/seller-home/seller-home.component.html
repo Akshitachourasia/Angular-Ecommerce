@@ -1,31 +1,33 @@
 <div class="product-list">
-<h1>Product List</h1>
-<p class="message">{{productMessage}}</p>
-<table>
-<thead>
-<tr>
-    <th>Image</th>
-   <th>Name</th>
-   <th>Price</th>
-   <th>Color</th>
-   <th>Category</th>
-   <th>Description</th>
-   <th>Action</th>
-</tr>
-</thead>
-<tbody *ngFor="let product of productList">
+    <h1>Product List</h1>
+    <p class="message">{{productMessage}}</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Color</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let product of productList">
 
-<tr>
-   <td><img src="{{product.image}}"></td>
-   <td>{{product.name}}</td>
-   <td>{{product.price}}</td>
-   <td>{{product.color}}</td>
-   <td>{{product.category}}</td>
-   <td>{{product.description}}</td>
-   <td><button (click)="deleteProduct(product.id)">Delete</button></td>
-</tr>
+            <tr>
+                <td><img src="{{product.image}}"></td>
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.color}}</td>
+                <td>{{product.category}}</td>
+                <td>{{product.description}}</td>
+                <td>
+                <fa-icon [icon]="icon" (click)="deleteProduct(product.id)"></fa-icon>
+                </td>
+            </tr>
 
-</tbody>
-</table>
+        </tbody>
+    </table>
 
 </div>
