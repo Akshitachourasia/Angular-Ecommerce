@@ -8,7 +8,7 @@ export interface Login{
     password: string;
 }
 export interface Product{
-    id: string;
+    _id: string;
     name: string;
     category: string;
     color: string;

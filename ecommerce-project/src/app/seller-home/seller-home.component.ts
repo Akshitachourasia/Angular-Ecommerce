@@ -25,9 +25,9 @@ export class SellerHomeComponent {
     this.list()
   }
 
-  deleteProduct(id: string) {
-    console.log("Clicked", id)
-    this.product.deleteProduct(id).subscribe((result) => {
+  deleteProduct(_id: string) {
+    console.log("Clicked", _id)
+    this.product.deleteProduct(_id).subscribe((result) => {
       if (result) {
         this.productMessage = "Product deleted successfully"
         this.list()

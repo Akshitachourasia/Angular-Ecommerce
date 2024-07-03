@@ -16,7 +16,7 @@ export class SellerUpdateProductComponent {
   constructor( private route: ActivatedRoute , private Product : ProductService) { }
   productData: Product | undefined
 ngOnInit(): void {
-  let productId = this.route.snapshot.paramMap.get('id')
+  let productId = this.route.snapshot.paramMap.get('_id')
   productId && this.Product.getProduct(productId).subscribe((data) => {
     this.productData = data
     console.log(data)
@@ -25,7 +25,7 @@ ngOnInit(): void {
 }
 submit(product: Product) {
   if (this.productData) {
-    product.id = this.productData.id
+    product._id = this.productData._id
     this.Product.updateProduct(product).subscribe((result) => {
       if (result) {
         this.productMessage = "Product updated successfully"

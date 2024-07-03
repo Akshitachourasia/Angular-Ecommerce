@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet , Router} from '@angular/router';
+import { ProductService } from '../services/product.service';
+import { Product } from '../data-types';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -11,7 +13,8 @@ import { RouterLink, RouterOutlet , Router} from '@angular/router';
 export class HeaderComponent {
   menuType: string = "default"
   sellerName: string = ""
-  constructor(private route: Router) { }
+searchResult : undefined | Product[]
+  constructor(private route: Router , private Product: ProductService) { }
 ngOnInit(): void {
   this.route.events.subscribe((val: any) => {
     if (val.url) {
@@ -20,10 +23,11 @@ ngOnInit(): void {
        this.menuType = "seller"
        if (localStorage.getItem('seller')) {
         let sellerStore = localStorage.getItem('seller')
-        let sellarData = sellerStore && JSON.parse(sellerStore)[0]
-        console.log(sellarData,"data")
-        this.sellerName = sellarData.name
-      
+        let sellerData = sellerStore && JSON.parse(sellerStore)[0]
+        console.log(sellerData,"data")
+        this.sellerName=sellerData.username
+        console.log(this.sellerName)
+    
       }
       }
       else {
@@ -37,5 +41,20 @@ logOut(){
   localStorage.removeItem('seller')
   this.route.navigate(['/'])
 }
-
+searchProduct(query: KeyboardEvent){
+if(query){
+  let element = query.target as HTMLInputElement;
+  this.Product.searchProduct(element.value).subscribe((result)=>{
+    this.searchResult = result
+    if(result.length >5){
+   result.length = 5;
+    }
+    console.log(result)
+  })
+}
+ 
+}
+hideSearch(){
+  this.searchResult = undefined 
+}
 }

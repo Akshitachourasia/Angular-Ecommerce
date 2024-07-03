@@ -9,24 +9,28 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   addProduct(data: Product) {
-    return this.http.post('http://localhost:3000/products', data)
+    return this.http.post('http://localhost:4545/products', data)
   }
   productList() {
-    return this.http.get<Product[]>('http://localhost:3000/products')
+    return this.http.get<Product[]>('http://localhost:4545/products')
   }
-  deleteProduct(id: string) {
-    return this.http.delete(`http://localhost:3000/products/${id}`)
+  deleteProduct(_id: string) {
+    return this.http.delete(`http://localhost:4545/products/${_id}`)
   }
-  getProduct(id: string) {
-    return this.http.get<Product>(`http://localhost:3000/products/${id}`)
+  getProduct(_id: string) {
+    return this.http.get<Product>(`http://localhost:4545/products/${_id}`)
   }
   updateProduct(product: Product) {
-    return this.http.put(`http://localhost:3000/products/${product.id}`, product)
+    return this.http.put(`http://localhost:4545/products/${product._id}`, product)
   }
   popularProducts() {
-    return this.http.get<Product[]>('http://localhost:3000/products?_limit=3')
+    return this.http.get<Product[]>('http://localhost:4545/products?limit=3')
   }
   trendyProducts() {
- return this.http.get<Product[]>('http://localhost:3000/products?_limit=8')
+    return this.http.get<Product[]>('http://localhost:4545/products?limit=5')
   }
-}
+  searchProduct(query: string) {
+    return this.http.get<Product[]>(`http://localhost:4545/products?q=${query}`
+    );
+  }
+  }
