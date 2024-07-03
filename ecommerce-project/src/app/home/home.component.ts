@@ -12,12 +12,17 @@ import { Product } from '../data-types';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  trendyProducts: undefined | Product[]
   popularProducts: undefined | Product[]
   constructor(private Product: ProductService) { }
   ngOnInit(): void {
     this.Product.popularProducts().subscribe((data) => {
       console.log(data)
       this.popularProducts = data
+    })
+    this.Product.trendyProducts().subscribe((data) => {
+      console.log(data)
+      this.trendyProducts = data
     })
   }
 

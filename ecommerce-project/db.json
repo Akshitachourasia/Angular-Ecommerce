@@ -76,6 +76,33 @@
       "category": "Mobile",
       "description": "Motorola Edge 50 Fusion 5G (Marshmallow Blue, 8GB RAM, 128GB Storage)",
       "image": "https://m.media-amazon.com/images/I/71XZP2Hm+5L._SL1500_.jpg"
+    },
+    {
+      "id": "94d4",
+      "name": "iQOO Neo9 ",
+      "price": "38,998",
+      "color": "Fiery Red",
+      "category": "Mobile",
+      "description": "iQOO Neo9 Pro 5G (Fiery Red, 12GB RAM, 256GB Storage) | Snapdragon 8 Gen 2 processor | Supercomputing Chip Q1 | Flagship level Sony IMX920 camera",
+      "image": "https://m.media-amazon.com/images/I/718jcIFYaAL._SL1200_.jpg"
+    },
+    {
+      "id": "e58b",
+      "name": "Samsung Galaxy Book3",
+      "price": "69,990",
+      "color": "Silver",
+      "category": "Laptop",
+      "description": "Samsung Galaxy Book3 Core i5 13th Gen 1335U - (16 GB/512 GB SSD/Windows 11 Home) Galaxy Book3 Thin and Light Laptop (15.6 Inch, Silver, 1.58 Kg, with MS Office)",
+      "image": "https://m.media-amazon.com/images/I/81NFEnJDJ6L._SL1500_.jpg"
+    },
+    {
+      "id": "7b71",
+      "name": "Apple MacBook ",
+      "price": "71,990",
+      "color": "Grey",
+      "category": "Laptop ",
+      "description": "Apple MacBook Air Laptop M1 chip, 13.3-inch/33.74 cm Retina Display, 8GB RAM, 256GB SSD Storage, Backlit Keyboard, FaceTime HD Camera, Touch ID. Works with iPhone/iPad; Space Grey\n",
+      "image": "https://m.media-amazon.com/images/I/71jG+e7roXL._SL1500_.jpg"
     }
   ]
 }
