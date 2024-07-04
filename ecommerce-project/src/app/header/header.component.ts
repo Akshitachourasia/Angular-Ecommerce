@@ -13,6 +13,7 @@ import { Product } from '../data-types';
 export class HeaderComponent {
   menuType: string = "default"
   sellerName: string = ""
+  customerName: string = ""
   searchResult: undefined | Product[]
   constructor(private route: Router, private Product: ProductService) { }
   ngOnInit(): void {
@@ -29,6 +30,13 @@ export class HeaderComponent {
             console.log(this.sellerName)
 
           }
+        }
+        else if (localStorage.getItem('user')) {
+          this.menuType = "user"
+          let customerStore = localStorage.getItem('user')
+          let customerData = customerStore && JSON.parse(customerStore)
+          console.log(customerData, "data")
+          this.customerName = customerData.name
         }
         else {
           this.menuType = "default"
@@ -48,7 +56,7 @@ export class HeaderComponent {
         if (result.length > 5) {
           result.length = 5;
         }
-        // console.log(result)
+        console.log(result)
       })
     }
 
@@ -64,4 +72,8 @@ export class HeaderComponent {
   redirectToDetails(id: string) {
     this.route.navigate([`details/${id}`])
   }
+userLogOut(){
+  localStorage.removeItem('user')
+  this.route.navigate(['/user-auth'])
+}
 }

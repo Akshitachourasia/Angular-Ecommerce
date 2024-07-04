@@ -15,15 +15,9 @@ import { HttpClient } from '@angular/common/http';
 export class UserAuthComponent {
   constructor(private user: UserService, private http:HttpClient , private router:Router) { }
 signUp(data: Signup) {
-this.http.post('http://localhost:4545/customers', data, {
-  observe: 'response' 
-}).subscribe((result) => {
-  if (result) {
-    localStorage.setItem('user', JSON.stringify(result.body))
-    this.router.navigate(['/'])
-
-  }
-})
+  this.user.userSignUp(data);
 }
-
+ngOnInit(): void {
+  this.user.userAuthReload()
+}
 }
