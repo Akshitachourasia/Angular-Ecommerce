@@ -12,8 +12,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './product-details.component.css'
 })
 export class ProductDetailsComponent {
-productData: undefined | Product
-  constructor( private activeRoute: ActivatedRoute, private product: ProductService) { }
+  productData: undefined | Product
+  productQuantity: number = 1
+  constructor(private activeRoute: ActivatedRoute, private product: ProductService) { }
 
   ngOnInit(): void {
 
@@ -23,5 +24,13 @@ productData: undefined | Product
       console.log(result)
     })
   }
+  handleQuantity(value: string) {
+    if (this.productQuantity < 20 && value === 'plus') {
+      this.productQuantity += 1
+    }
+    else if (this.productQuantity > 1 && value === 'min') {
+      this.productQuantity -= 1
+    }
 
+  }
 }
