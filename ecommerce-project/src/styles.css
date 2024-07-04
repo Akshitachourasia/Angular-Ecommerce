@@ -24,10 +24,11 @@ body {
     color: blueviolet;
 }
 
-.signup-btn {
+.form-btn {
     height: 35px;
     border: 1px solid blueviolet;
     cursor: pointer;
+    color: blueviolet; ;
 }
 
 .error {
