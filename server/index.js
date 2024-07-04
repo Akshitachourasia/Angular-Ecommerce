@@ -155,12 +155,21 @@ app.post('/customers', async (req, res) => {
     }
 })
 
-app.get(/customers/, async (req, res) => {
+app.get('/customers', async (req, res) => {
     try {
         const customers = await Customer.find();
         res.send(customers);
     } catch (error) {
         console.log(error)
+    }
+})
+app.get('/customers/login', async (req, res) => {
+    try {
+        const { email, password } = req.query;
+        const customer = await Customer.findOne({ email, password });
+        res.send(customer);
+    } catch (error) {
+        console.log(error)  
     }
 })
 

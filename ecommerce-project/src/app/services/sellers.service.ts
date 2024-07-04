@@ -33,7 +33,7 @@ export class SellersService {
        {
       observe: 'response'
     }).subscribe((result) => {
-      if (result && result.body && result.body
+      if (result && result.body
     
       ) {
         console.log("user logged in");

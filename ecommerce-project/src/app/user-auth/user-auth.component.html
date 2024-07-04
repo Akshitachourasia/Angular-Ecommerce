@@ -15,7 +15,7 @@
     <div class="user-login" *ngIf="showLogin">
         <h1>User Login</h1>
 
-        <form #userForm="ngForm" (ngSubmit)="login(userForm.value)" class="form">
+        <form #userLoginForm="ngForm" (ngSubmit)="login(userLoginForm.value)" class="form">
 
             <input class="input" type="text" ngModel name="email" placeholder="Enter Email" />
             <input class="input" type="password" ngModel name="password" placeholder="Enter Password" />
