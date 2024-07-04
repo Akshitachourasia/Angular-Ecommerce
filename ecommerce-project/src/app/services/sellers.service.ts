@@ -29,12 +29,13 @@ export class SellersService {
   }
   userLogin(data: Login) {
     console.log(data);
-    this.http.get(`http://localhost:4545/users?email=${data.email}&password=${data.password}`,
+    this.http.get(`http://localhost:4545/users/login?email=${data.email}&password=${data.password}`,
        {
       observe: 'response'
-    }).subscribe((result: any) => {
-      console.log(result);
-      if (result && result.body && result.body.length) {
+    }).subscribe((result) => {
+      if (result && result.body && result.body
+    
+      ) {
         console.log("user logged in");
         localStorage.setItem('seller', JSON.stringify(result.body));
         this.router.navigate(['seller-home']);

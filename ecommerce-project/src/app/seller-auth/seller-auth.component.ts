@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class SellerAuthComponent {
   constructor(private seller: SellersService, private router: Router) {
-  }  //service name
+  }  
   showLogin = false
   authError : string ="" 
 ngOnInit(): void {  
@@ -25,7 +25,6 @@ ngOnInit(): void {
   }
   login(data: any) {
     this.authError = ""
-    // console.log(data);
  this.seller.userLogin(data)
  this.seller.isLoginError.subscribe((isError) => {
    if (isError) {

@@ -23,7 +23,7 @@ export class HeaderComponent {
           this.menuType = "seller"
           if (localStorage.getItem('seller')) {
             let sellerStore = localStorage.getItem('seller')
-            let sellerData = sellerStore && JSON.parse(sellerStore)[0]
+            let sellerData = sellerStore && JSON.parse(sellerStore)
             console.log(sellerData, "data")
             this.sellerName = sellerData.username
             console.log(this.sellerName)
@@ -31,7 +31,6 @@ export class HeaderComponent {
           }
         }
         else {
-          console.log("seller not logged in")
           this.menuType = "default"
         }
       }
@@ -49,7 +48,7 @@ export class HeaderComponent {
         if (result.length > 5) {
           result.length = 5;
         }
-        console.log(result)
+        // console.log(result)
       })
     }
 

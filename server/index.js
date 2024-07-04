@@ -3,6 +3,7 @@ const dbConnect = require('./routes/dbConnect');
 const express = require('express');
 const User = require('./model/user.schema');
 const Product = require('./model/products.schema');
+const Customer = require('./model/customer.schema');
 const app = express();
 
 
@@ -61,6 +62,15 @@ app.put('/products/:_id', async (req, res) => {
     }
 })
 
+app.get('/users/login', async (req, res) => {
+    try {
+        const { email, password } = req.query;
+        const user = await User.findOne({ email, password });
+        res.send(user);
+    } catch (error) {
+        console.log(error)  
+    }
+})
 
 app.get('/products/:_id', async (req, res) => {     
     
@@ -130,6 +140,25 @@ app.delete('/users/:_id', async (req, res) => {
     try {
         const user = await User.findByIdAndDelete(req.params._id);
         res.send(user);
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+app.post('/customers', async (req, res) => {
+    try {   
+        const customer = new Customer(req.body);
+        await customer.save();
+        res.status(201).send(customer); 
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+app.get(/customers/, async (req, res) => {
+    try {
+        const customers = await Customer.find();
+        res.send(customers);
     } catch (error) {
         console.log(error)
     }

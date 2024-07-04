@@ -16,7 +16,6 @@ export class SellerAddProductComponent {
 addProductMessage: string | undefined
   submit(data: Product) {
     this.product.addProduct(data).subscribe((result) => {
-      console.log(result)
       if (result) {
        this.addProductMessage = "Product added successfully"
       }

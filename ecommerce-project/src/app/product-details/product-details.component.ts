@@ -21,7 +21,7 @@ export class ProductDetailsComponent {
     let productId = this.activeRoute.snapshot.paramMap.get('productId');
     productId && this.product.getProduct(productId).subscribe((result) => {
       this.productData = result
-      console.log(result)
+      // console.log(result)
     })
   }
   handleQuantity(value: string) {
