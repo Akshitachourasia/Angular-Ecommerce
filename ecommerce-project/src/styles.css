@@ -28,7 +28,8 @@ body {
     height: 35px;
     border: 1px solid blueviolet;
     cursor: pointer;
-    color: blueviolet; ;
+    color: blueviolet;
+    ;
 }
 
 .error {
@@ -50,4 +51,11 @@ body {
 .carousel-control-prev-icon {
     background-color: black;
     border-radius: 5px;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: -20px;
+    text-align: left;
 }
