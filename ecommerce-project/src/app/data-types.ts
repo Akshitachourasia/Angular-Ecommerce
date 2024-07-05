@@ -8,6 +8,7 @@ export interface Login{
     password: string;
 }
 export interface Product{
+    quantity: number| undefined;
     _id: string;
     name: string;
     category: string;

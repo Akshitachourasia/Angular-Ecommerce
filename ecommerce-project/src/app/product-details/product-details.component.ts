@@ -3,6 +3,7 @@ import { ProductService } from '../services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../data-types';
 import { CommonModule } from '@angular/common';
+import { config } from 'rxjs';
 
 @Component({
   selector: 'app-product-details',
@@ -12,7 +13,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './product-details.component.css'
 })
 export class ProductDetailsComponent {
-  productData: undefined | Product
+  productData: Product | undefined
   productQuantity: number = 1
   constructor(private activeRoute: ActivatedRoute, private product: ProductService) { }
 
@@ -33,4 +34,16 @@ export class ProductDetailsComponent {
     }
 
   }
+  AddToCart() {
+    if (this.productData) {
+      this.productData.quantity = this.productQuantity;
+      if (!localStorage.getItem('user')) {
+        console.log(this.productData);
+        this.product.localAddToCart(this.productData);
+      }
+    } else {
+      console.error("Product data is undefined");
+    }
+  }
+
 }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, JsonpInterceptor } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../data-types';
 
@@ -32,5 +32,16 @@ export class ProductService {
   searchProduct(query: string) {
     return this.http.get<Product[]>(`http://localhost:4545/products?q=${query}`
     );
+  }
+  localAddToCart(data: Product){
+    let cartData = []
+    let  localCart= localStorage.getItem('localCart')
+    if(!localCart){
+      localStorage.setItem('localCart' ,JSON.stringify([data]))
+    }else{
+      cartData=JSON.parse(localCart)
+      cartData.push(data)
+      localStorage.setItem('localCart', JSON.stringify(cartData))
+    }
   }
   }
