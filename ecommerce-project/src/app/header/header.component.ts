@@ -12,6 +12,7 @@ import { Product } from '../data-types';
 })
 export class HeaderComponent {
   menuType: string = "default"
+  cartItems = 0
   sellerName: string = ""
   customerName: string = ""
   searchResult: undefined | Product[]
@@ -43,6 +44,13 @@ export class HeaderComponent {
         }
       }
     })
+    let cartData = localStorage.getItem('localCart')
+    if (cartData) {
+      this.cartItems = JSON.parse(cartData).length
+      this.Product.cartData.subscribe((items) => {
+        this.cartItems = items.length
+      })
+    }
   }
   logOut() {
     localStorage.removeItem('seller')
@@ -72,8 +80,8 @@ export class HeaderComponent {
   redirectToDetails(id: string) {
     this.route.navigate([`details/${id}`])
   }
-userLogOut(){
-  localStorage.removeItem('user')
-  this.route.navigate(['/user-auth'])
-}
+  userLogOut() {
+    localStorage.removeItem('user')
+    this.route.navigate(['/user-auth'])
+  }
 }

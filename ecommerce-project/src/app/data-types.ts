@@ -9,6 +9,7 @@ export interface Login{
 }
 export interface Product{
     quantity: number| undefined;
+    productId:string| undefined;
     _id: string;
     name: string;
     category: string;
