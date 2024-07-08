@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Login, Signup } from '../data-types';
+import { Cart, Login, Product, Signup } from '../data-types';
 import { UserService } from '../services/user.service';
-import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { ProductService } from '../services/product.service';
 @Component({
   selector: 'app-user-auth',
   standalone: true,
@@ -14,7 +13,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserAuthComponent {
   showLogin = true
-  constructor(private user: UserService, private http: HttpClient, private router: Router) { }
+  authError:string= "" ;
+  constructor(private user: UserService , private Product: ProductService,) { }
   signUp(data: Signup) {
     this.user.userSignUp(data);
   }
@@ -24,12 +24,49 @@ export class UserAuthComponent {
 
   login(data: Login) {
     this.user.userLogin(data);
+    this.user.invalidUserAuth.subscribe((result)=>{
+      console.warn(result);
+      if(result){
+         this.authError="User not found"
+      }else{
+        this.localToCart();
+      }
+      
+    })
   }
+
+  openSignUp() {
+    this.showLogin = false
+  }
+  openLogin() {
+    this.showLogin = true
+  }
+  localToCart() {
+    let data = localStorage.getItem('localCart')
+    if (data) {
+      let CartList: Product[] = JSON.parse(data)
+      let user = localStorage.getItem('user')
+      let userId = user && JSON.parse(user).id
+      CartList.forEach((Product, index) => {
+        let cartData: Cart = {
+          ...Product,
+          productId: Product._id,
+          userId,
+        }
+        delete cartData._id
+  
+          this.Product.addToCart(cartData).subscribe((result) => {
+            // console.log(result,"ujgykhkhjkjh.lkjh")
+            if (result) {
+              alert('Item stored in DataBase')
+            }
+          })
+          if(CartList.length===index+1){
+            localStorage.removeItem('localCart')
+            console.log(CartList,"lllllllllll")
+          }
  
-  openSignUp(){
-    this.showLogin=false
-  }
-  openLogin(){
-    this.showLogin=true
+      });
+    }
   }
 }

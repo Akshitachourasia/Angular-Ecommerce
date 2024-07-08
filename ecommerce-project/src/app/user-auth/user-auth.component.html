@@ -16,12 +16,12 @@
         <h1>User Login</h1>
 
         <form #userLoginForm="ngForm" (ngSubmit)="login(userLoginForm.value)" class="form">
-
+            <p class="error">{{authError}}</p>
             <input class="input" type="text" ngModel name="email" placeholder="Enter Email" ngModel #email="ngModel"
                 required email />
             <span class="error" *ngIf="email.invalid && email.touched">Please enter valid Email</span>
             <input class="input" type="password" ngModel name="password" placeholder="Enter Password" ngModel
-                #password="ngModel" required pasword  minlength="4"/>
+                #password="ngModel" required pasword minlength="4" />
             <span class="error" *ngIf="password.invalid && password.touched">Please enter valid Password</span>
             <button [disabled]="userLoginForm.invalid" class="form-btn">Login</button>
             <p>Don't have an account??<a class="auth-toggle-link" (click)="openSignUp()"> Click to SignUp</a></p>
