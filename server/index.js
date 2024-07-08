@@ -4,6 +4,7 @@ const express = require('express');
 const User = require('./model/user.schema');
 const Product = require('./model/products.schema');
 const Customer = require('./model/customer.schema');
+const Cart = require('./model/cart.schema')
 const app = express();
 
 
@@ -26,12 +27,12 @@ app.post('/products', async (req, res) => {
 app.get('/products', async (req, res) => {
     try {
         const { limit, q } = req.query;
-        
+
         let filter = {};
         if (q) {
             filter.$or = [
-                { name: { $regex: q, $options: 'i' } }, 
-                { description: { $regex: q, $options: 'i' } }, 
+                { name: { $regex: q, $options: 'i' } },
+                { description: { $regex: q, $options: 'i' } },
                 { category: { $regex: q, $options: 'i' } },
                 { price: { $regex: q, $options: 'i' } },
                 { color: { $regex: q, $options: 'i' } }
@@ -68,13 +69,13 @@ app.get('/users/login', async (req, res) => {
         const user = await User.findOne({ email, password });
         res.send(user);
     } catch (error) {
-        console.log(error)  
+        console.log(error)
     }
 })
 
-app.get('/products/:_id', async (req, res) => {     
-    
-    try {       
+app.get('/products/:_id', async (req, res) => {
+
+    try {
         const products = await Product.findById(req.params._id);
         res.send(products);
     } catch (error) {
@@ -103,12 +104,12 @@ app.post('/users', async (req, res) => {
 
 app.get('/users', async (req, res) => {
     try {
-        const { limit, email ,password } = req.query;
-        
+        const { limit, email, password } = req.query;
+
         let filter = {};
         if (email && password) {
             filter.$or = [
-                { email: { $regex: email, $options: 'i' } }, 
+                { email: { $regex: email, $options: 'i' } },
                 { password: { $regex: password, $options: 'i' } },
 
             ];
@@ -146,10 +147,10 @@ app.delete('/users/:_id', async (req, res) => {
 })
 
 app.post('/customers', async (req, res) => {
-    try {   
+    try {
         const customer = new Customer(req.body);
         await customer.save();
-        res.status(201).send(customer); 
+        res.status(201).send(customer);
     } catch (error) {
         console.log(error)
     }
@@ -169,7 +170,28 @@ app.get('/customers/login', async (req, res) => {
         const customer = await Customer.findOne({ email, password });
         res.send(customer);
     } catch (error) {
-        console.log(error)  
+        console.log(error)
+    }
+})
+
+app.post('/cart' , async(req , res)=>{
+    try {
+        const cart = new Cart(req.body);
+        await cart.save();
+        res.status(201).send(cart);
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+
+app.get('/cart', async (req, res) => {
+
+    try {
+        const cart = await Cart.find();
+        res.send(cart);
+    } catch (error) {
+        console.log(error)
     }
 })
 

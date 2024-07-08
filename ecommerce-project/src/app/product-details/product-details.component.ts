@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from '../data-types';
+import { Cart, Product } from '../data-types';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -48,14 +48,28 @@ export class ProductDetailsComponent implements OnInit {
       if (!localStorage.getItem('user')) {
         this.product.localAddToCart(this.productData);
         this.removeCart = true;
+      } else {
+        let user = localStorage.getItem('user')
+        let userId = user && JSON.parse(user)._id
+        console.log(userId)
+        let cartData: Cart = {
+          ...this.productData,
+          userId,
+          productId: this.productData._id,
+        }
+        delete cartData._id
+        this.product.addToCart(cartData).subscribe((result) => {
+          if (result) {
+            alert('product added')
+          }
+        })
       }
-    } else {
-      console.error("Product data is undefined");
     }
   }
 
   removeToCart(productId: string) {
-  this.product.removeFromCart(productId)
-  this.removeCart=false
+    this.product.removeFromCart(productId)
+    this.removeCart = false
+
   }
 }

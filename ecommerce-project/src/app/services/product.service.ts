@@ -1,6 +1,6 @@
 import { HttpClient, JsonpInterceptor } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import { Product } from '../data-types';
+import { Cart, Product } from '../data-types';
 
 @Injectable({
   providedIn: 'root'
@@ -46,18 +46,22 @@ export class ProductService {
       this.cartData.emit(cartData)
     }
   }
-  removeFromCart(productId:string) {
+  removeFromCart(productId: string) {
     let cartData = localStorage.getItem('localCart')
-   if(cartData){
-    let items: Product[] = JSON.parse(cartData);
-    items = items.filter((item:Product)=>productId !== item._id);
-    console.log(items, "Remaining items")
-    setTimeout(() => {
-      localStorage.setItem('localCart', JSON.stringify(items))
-      
-  }, 2000);
-  this.cartData.emit(items)
-   }
-   
+    if (cartData) {
+      let items: Product[] = JSON.parse(cartData);
+      items = items.filter((item: Product) => productId !== item._id);
+      console.log(items, "Remaining items")
+      setTimeout(() => {
+        localStorage.setItem('localCart', JSON.stringify(items))
+
+      }, 2000);
+      this.cartData.emit(items)
+    }
+
+  }
+  addToCart(cartData: Cart) {
+    return this.http.post('http://localhost:4545/cart', cartData)
+
   }
 }
