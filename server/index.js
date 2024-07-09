@@ -174,7 +174,7 @@ app.get('/customers/login', async (req, res) => {
     }
 })
 
-app.post('/cart' , async(req , res)=>{
+app.post('/cart', async (req, res) => {
     try {
         const cart = new Cart(req.body);
         await cart.save();
@@ -198,13 +198,23 @@ app.get('/cart', async (req, res) => {
 app.get('/cart/:userId', async (req, res) => {
 
     try {
-        const userId= req.params.userId
-        const cart = await Cart.find({userId});
+        const userId = req.params.userId
+        const cart = await Cart.find({ userId });
         res.send(cart);
     } catch (error) {
         console.log(error)
     }
 })
+
+app.delete('/cart/:_id', async (req, res) => {
+    try {
+        const cart = await Cart.findByIdAndDelete(req.params._id);
+        res.send(cart);
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 
 app.listen(4545, () => {
     console.log("listening on port 4545");

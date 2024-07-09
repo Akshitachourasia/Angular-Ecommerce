@@ -15,12 +15,11 @@ export class ProductDetailsComponent {
   productData: Product | undefined;
   productQuantity: number = 1;
   removeCart = false;
-
+  cartData: Product | undefined;
   constructor(private activeRoute: ActivatedRoute, private Product: ProductService) { }
 
   ngOnInit(): void {
     let productId = this.activeRoute.snapshot.paramMap.get('productId');
-    console.warn(productId);
     productId && this.Product.getProduct(productId).subscribe((result) => {
       this.productData = result;
       let cartData = localStorage.getItem('localCart');
@@ -33,26 +32,20 @@ export class ProductDetailsComponent {
           this.removeCart = false
         }
       }
-
-      let user = localStorage.getItem('user')
+      let user = localStorage.getItem('user');
       if (user) {
-        let userId = user && JSON.parse(user)._id
-        this.Product.getCart(userId)
+        let userId = user && JSON.parse(user)._id;
+        this.Product.getCart(userId);
         this.Product.cartData.subscribe((result) => {
-         let item= result.filter((item: Product) => productId?.toString() === item.productId?.toString())
-          if(item.length){
-            this.removeCart=true
+          let item = result.filter((item: Product) => productId?.toString() === item.productId?.toString())
+          if (item.length) {
+            this.cartData = item[0];
+            this.removeCart = true;
           }
         })
-
       }
-
     })
-
   }
-
-
-
   handleQuantity(value: string) {
     if (value === 'plus' && this.productQuantity < 20) {
       this.productQuantity++;
@@ -89,8 +82,20 @@ export class ProductDetailsComponent {
   }
 
   removeToCart(productId: string) {
-    this.Product.removeFromCart(productId)
-    this.removeCart = false
+    if (!localStorage.getItem('user')) {
+      this.Product.removeFromCart(productId)
+    } else {
+      let user= localStorage.getItem('user')
+      let userId = user && JSON.parse(user)._id;
+      
+      console.log(this.cartData)
+      this.cartData && this.Product.removeToCart(this.cartData._id).subscribe((result) => {
+        if (result) {
+          this.Product.getCart(userId)
+        }
+      })
+      this.removeCart = false
+    }
 
   }
 

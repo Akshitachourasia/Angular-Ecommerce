@@ -32,11 +32,11 @@ const cartSchema = new mongoose.Schema({
     },
     productId: {
         type: String,
- 
+
     },
     userId: {
         type: String,
-      
+
     },
 
 })

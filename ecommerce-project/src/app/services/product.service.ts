@@ -73,5 +73,7 @@ export class ProductService {
       }
     })
   }
-
+removeToCart(cartId: string){
+  return this.http.delete(`http://localhost:4545/cart/${cartId}`)
+}
 }
