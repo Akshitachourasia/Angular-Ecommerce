@@ -25,7 +25,6 @@ export class UserAuthComponent {
   login(data: Login) {
     this.user.userLogin(data);
     this.user.invalidUserAuth.subscribe((result)=>{
-      console.warn(result);
       if(result){
          this.authError="User not found"
       }else{
@@ -43,10 +42,10 @@ export class UserAuthComponent {
   }
   localToCart() {
     let data = localStorage.getItem('localCart')
+    let user = localStorage.getItem('user')
+    let userId = user && JSON.parse(user)._id
     if (data) {
       let CartList: Product[] = JSON.parse(data)
-      let user = localStorage.getItem('user')
-      let userId = user && JSON.parse(user).id
       CartList.forEach((Product, index) => {
         let cartData: Cart = {
           ...Product,
@@ -56,17 +55,16 @@ export class UserAuthComponent {
         delete cartData._id
   
           this.Product.addToCart(cartData).subscribe((result) => {
-            // console.log(result,"ujgykhkhjkjh.lkjh")
             if (result) {
               alert('Item stored in DataBase')
             }
           })
           if(CartList.length===index+1){
             localStorage.removeItem('localCart')
-            console.log(CartList,"lllllllllll")
           }
  
       });
     }
+    this.Product.getCart(userId)
   }
 }

@@ -36,7 +36,6 @@ export class HeaderComponent {
           this.menuType = "user"
           let customerStore = localStorage.getItem('user')
           let customerData = customerStore && JSON.parse(customerStore)
-          console.log(customerData, "data")
           this.customerName = customerData.name
         }
         else {
@@ -47,10 +46,10 @@ export class HeaderComponent {
     let cartData = localStorage.getItem('localCart')
     if (cartData) {
       this.cartItems = JSON.parse(cartData).length
+    }
       this.Product.cartData.subscribe((items) => {
         this.cartItems = items.length
       })
-    }
   }
   logOut() {
     localStorage.removeItem('seller')
@@ -83,5 +82,6 @@ export class HeaderComponent {
   userLogOut() {
     localStorage.removeItem('user')
     this.route.navigate(['/user-auth'])
+    this.Product.cartData.emit([])
   }
 }
