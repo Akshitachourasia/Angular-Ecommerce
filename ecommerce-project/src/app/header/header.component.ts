@@ -37,6 +37,7 @@ export class HeaderComponent {
           let customerStore = localStorage.getItem('user')
           let customerData = customerStore && JSON.parse(customerStore)
           this.customerName = customerData.name
+          this.Product.getCart(customerData._id)
         }
         else {
           this.menuType = "default"
