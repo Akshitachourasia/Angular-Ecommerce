@@ -9,6 +9,7 @@ import { SearchComponent } from './search/search.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { UserAuthComponent } from './user-auth/user-auth.component';
 import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 export const routes: Routes = [
     {
@@ -55,8 +56,12 @@ export const routes: Routes = [
         component: UserAuthComponent
     },
     {
-        path:'cart' ,
+        path: 'cart',
         component: CartComponent
+    },
+    {
+        path: 'checkout',
+        component: CheckoutComponent
     }
 
 

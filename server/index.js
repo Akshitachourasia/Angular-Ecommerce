@@ -13,7 +13,6 @@ dbConnect()
 app.use(cors());
 app.use(express.json());
 
-
 app.post('/products', async (req, res) => {
     try {
         const products = new Product(req.body);
