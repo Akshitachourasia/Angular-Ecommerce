@@ -68,12 +68,16 @@ export class ProductService {
   getCart(userId: string) {
     return this.http.get<Product[]>(`http://localhost:4545/cart/${userId}`,{ observe:'response' }).subscribe((result)=>{
       if(result&& result.body){
-        console.log(result.body)
         this.cartData.emit(result.body)
       }
     })
   }
 removeToCart(cartId: string){
   return this.http.delete(`http://localhost:4545/cart/${cartId}`)
+}
+currentCart(){
+  let customerStore = localStorage.getItem('user')
+  let customerData = customerStore && JSON.parse(customerStore)
+  return this.http.get<Cart[]>(`http://localhost:4545/cart/${customerData._id}`)
 }
 }

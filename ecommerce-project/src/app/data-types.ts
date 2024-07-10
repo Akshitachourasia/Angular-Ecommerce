@@ -19,7 +19,7 @@ export interface Product {
     description: string;
 }
 export interface Cart {
-    _id: string|undefined;
+    _id: string | undefined;
     quantity: number | undefined;
     productId: string | undefined;
     name: string;
@@ -29,4 +29,11 @@ export interface Cart {
     image: string;
     description: string;
     userId: string;
+}
+export interface Summary {
+    amount: number;
+    tax: number;
+    delivery:number;
+    discount:number;
+    total: number;
 }
