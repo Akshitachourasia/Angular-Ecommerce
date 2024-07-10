@@ -17,3 +17,7 @@
     border-bottom:1px solid #ddd;
 
 }
+.details{
+    display: flex;
+    justify-content: space-between;
+}

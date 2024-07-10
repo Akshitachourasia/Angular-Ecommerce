@@ -35,8 +35,10 @@ export class CartComponent {
       this.summary.delivery = 100
       this.summary.discount = amt / 10;
       this.summary.tax = amt / 10;
-      this.summary.total = amt + 100 + (amt / 10) - (amt / 10)
+      this.summary.total = parseFloat((amt + 100 + (amt / 10) - (amt / 10)).toFixed(2));
+
     })
+  
 
   }
   checkout() {

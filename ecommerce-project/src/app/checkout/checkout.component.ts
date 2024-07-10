@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from '../services/product.service';
-import { order } from '../data-types';
+import { Cart, order } from '../data-types';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class CheckoutComponent {
   totalAmount: number | undefined
+  cartData: Cart[]|undefined
   constructor(private Product: ProductService, private router: Router) { }
   ngOnInit(): void {
     this.Product.currentCart().subscribe((result) => {
@@ -22,7 +23,8 @@ export class CheckoutComponent {
           amt = amt + (+items.price * + items.quantity)
         }
       });
-      this.totalAmount = amt + 100 + (amt / 10) - (amt / 10)
+      this.totalAmount = parseFloat((amt + 100 + (amt / 10) - (amt / 10)).toFixed(2));
+
     })
   }
   orderNow(data: { email: string, address: string, contact: number }) {
@@ -32,10 +34,18 @@ export class CheckoutComponent {
       ...data,
       totalAmount: this.totalAmount,
       userId,
+      _id: undefined
     }
     this.Product.orderNow(orderData).subscribe((result) => {
       alert("Order Placed...!!")
       this.router.navigate(['/my-order'])
     })
+   
+    
+        this.Product.deleteAllCart().subscribe((result)=>{
+          this.cartData=result
+          console.log()
+        })
   }
+   
 }

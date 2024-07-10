@@ -225,8 +225,34 @@ app.post('/order', async (req, res) => {
     }
 })
 
+app.get('/order', async (req, res) => {
 
+    try {
+        const order = await Order.find();
+        res.send(order);
+    } catch (error) {
+        console.log(error)
+    }
+})
 
+app.get('/order/:userId', async (req, res) => {
+
+    try {
+        const userId = req.params.userId
+        const order = await Order.find({ userId });
+        res.send(order);
+    } catch (error) {
+        console.log(error)
+    }
+})
+app.delete('/cart', async (req, res) => {
+    try {
+        await Cart.deleteMany({});
+        res.status(200).json({ message: 'All cart data removed' });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
 app.listen(4545, () => {
     console.log("listening on port 4545");
 })  
