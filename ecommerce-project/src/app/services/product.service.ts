@@ -1,6 +1,6 @@
 import { HttpClient, JsonpInterceptor } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import { Cart, Product } from '../data-types';
+import { Cart, order, Product } from '../data-types';
 
 @Injectable({
   providedIn: 'root'
@@ -79,5 +79,8 @@ currentCart(){
   let customerStore = localStorage.getItem('user')
   let customerData = customerStore && JSON.parse(customerStore)
   return this.http.get<Cart[]>(`http://localhost:4545/cart/${customerData._id}`)
+}
+orderNow(data:order){
+  return this.http.post('http://localhost:4545/order', data)
 }
 }

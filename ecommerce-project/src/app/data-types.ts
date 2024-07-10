@@ -37,3 +37,10 @@ export interface Summary {
     discount:number;
     total: number;
 }
+export interface order{
+    email: string,
+    address: string,
+    contact: number,
+    totalAmount: number|undefined,
+    userId: string
+}

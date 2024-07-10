@@ -5,6 +5,7 @@ const User = require('./model/user.schema');
 const Product = require('./model/products.schema');
 const Customer = require('./model/customer.schema');
 const Cart = require('./model/cart.schema')
+const Order = require('./model/order.schema')
 const app = express();
 
 
@@ -213,6 +214,17 @@ app.delete('/cart/:_id', async (req, res) => {
         console.log(error)
     }
 })
+
+app.post('/order', async (req, res) => {
+    try {
+        const order = new Order(req.body);
+        await order.save();
+        res.status(201).send(order);
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 
 
 app.listen(4545, () => {
