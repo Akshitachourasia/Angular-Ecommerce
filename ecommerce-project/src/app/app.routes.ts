@@ -10,6 +10,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { UserAuthComponent } from './user-auth/user-auth.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
 
 export const routes: Routes = [
     {
@@ -62,6 +63,10 @@ export const routes: Routes = [
     {
         path: 'checkout',
         component: CheckoutComponent
+    },
+    {
+        path:'my-order',
+        component: MyOrdersComponent
     }
 
 
