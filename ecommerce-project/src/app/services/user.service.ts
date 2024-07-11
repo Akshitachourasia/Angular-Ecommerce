@@ -10,7 +10,7 @@ export class UserService {
   invalidUserAuth= new EventEmitter<boolean>(false)
   constructor(private http: HttpClient, private router: Router) { }
   userSignUp(user: Signup) {
-    this.http.post('http://localhost:4545/customers', user, { observe: 'response' })
+    this.http.post('https://ecommerce-backend-git-master-akshita-s-projects.vercel.app/customers', user, { observe: 'response' })
       .subscribe((result) => {
         if (result) {
           localStorage.setItem('user', JSON.stringify(result.body));
@@ -26,7 +26,7 @@ export class UserService {
     }
   }
   userLogin(data:Login){
-    this.http.get<Signup[]>(`http://localhost:4545/customers/login?email=${data.email}&password=${data.password}`,
+    this.http.get<Signup[]>(`https://ecommerce-backend-git-master-akshita-s-projects.vercel.app/customers/login?email=${data.email}&password=${data.password}`,
     {observe:'response'}
     ).subscribe((result)=>{
       if(result && result.body){

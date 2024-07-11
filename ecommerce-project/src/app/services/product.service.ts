@@ -10,28 +10,28 @@ export class ProductService {
   cartData = new EventEmitter<Product[] | []>();
 
   addProduct(data: Product) {
-    return this.http.post('http://localhost:4545/products', data)
+    return this.http.post('https://ecommerce-backend-git-master-akshita-s-projects.vercel.app/products', data)
   }
   productList() {
-    return this.http.get<Product[]>('http://localhost:4545/products')
+    return this.http.get<Product[]>('https://ecommerce-backend-git-master-akshita-s-projects.vercel.app/products')
   }
   deleteProduct(_id: string) {
-    return this.http.delete(`http://localhost:4545/products/${_id}`)
+    return this.http.delete(`https://ecommerce-backend-git-master-akshita-s-projects.vercel.app/products/${_id}`)
   }
   getProduct(_id: string) {
-    return this.http.get<Product>(`http://localhost:4545/products/${_id}`)
+    return this.http.get<Product>(`https://ecommerce-backend-git-master-akshita-s-projects.vercel.app/products/${_id}`)
   }
   updateProduct(product: Product) {
-    return this.http.put(`http://localhost:4545/products/${product._id}`, product)
+    return this.http.put(`https://ecommerce-backend-git-master-akshita-s-projects.vercel.app/products/${product._id}`, product)
   }
   popularProducts() {
-    return this.http.get<Product[]>('http://localhost:4545/products?limit=3')
+    return this.http.get<Product[]>('https://ecommerce-backend-git-master-akshita-s-projects.vercel.app/products?limit=3')
   }
   trendyProducts() {
-    return this.http.get<Product[]>('http://localhost:4545/products?limit=5')
+    return this.http.get<Product[]>('https://ecommerce-backend-git-master-akshita-s-projects.vercel.app/products?limit=5')
   }
   searchProduct(query: string) {
-    return this.http.get<Product[]>(`http://localhost:4545/products?q=${query}`
+    return this.http.get<Product[]>(`https://ecommerce-backend-git-master-akshita-s-projects.vercel.app/products?q=${query}`
     );
   }
   localAddToCart(data: Product) {
@@ -61,37 +61,37 @@ export class ProductService {
     }
   }
   addToCart(cartData: Cart) {
-    return this.http.post('http://localhost:4545/cart', cartData)
+    return this.http.post('https://ecommerce-backend-git-master-akshita-s-projects.vercel.app/cart', cartData)
   }
 
   getCart(userId: string) {
-    return this.http.get<Product[]>(`http://localhost:4545/cart/${userId}`, { observe: 'response' }).subscribe((result) => {
+    return this.http.get<Product[]>(`https://ecommerce-backend-git-master-akshita-s-projects.vercel.app/cart/${userId}`, { observe: 'response' }).subscribe((result) => {
       if (result && result.body) {
         this.cartData.emit(result.body)
       }
     })
   }
   removeToCart(cartId: string|undefined) {
-    return this.http.delete(`http://localhost:4545/cart/${cartId}`)
+    return this.http.delete(`https://ecommerce-backend-git-master-akshita-s-projects.vercel.app/cart/${cartId}`)
   }
   currentCart() {
     let customerStore = localStorage.getItem('user')
     let customerData = customerStore && JSON.parse(customerStore)
-    return this.http.get<Cart[]>(`http://localhost:4545/cart/${customerData._id}`)
+    return this.http.get<Cart[]>(`https://ecommerce-backend-git-master-akshita-s-projects.vercel.app/cart/${customerData._id}`)
   }
   orderNow(data: order) {
-    return this.http.post('http://localhost:4545/order', data)
+    return this.http.post('https://ecommerce-backend-git-master-akshita-s-projects.vercel.app/order', data)
   }
   orderList() {
     let customerStore = localStorage.getItem('user')
     let customerData = customerStore && JSON.parse(customerStore)
-    return this.http.get<order[]>(`http://localhost:4545/order/${customerData._id}`)
+    return this.http.get<order[]>(`https://ecommerce-backend-git-master-akshita-s-projects.vercel.app/order/${customerData._id}`)
 
   }
   deleteAllCart(){
-    return this.http.delete<Cart[]>('http://localhost:4545/cart')
+    return this.http.delete<Cart[]>('https://ecommerce-backend-git-master-akshita-s-projects.vercel.app/cart')
   }
   cancelOrder(_id: string){
-    return this.http.delete(`http://localhost:4545/order/${_id}`)
+    return this.http.delete(`https://ecommerce-backend-git-master-akshita-s-projects.vercel.app/order/${_id}`)
   }
 }

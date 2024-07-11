@@ -48,9 +48,9 @@ export class HeaderComponent {
     if (cartData) {
       this.cartItems = JSON.parse(cartData).length
     }
-      this.Product.cartData.subscribe((items) => {
-        this.cartItems = items.length
-      })
+    this.Product.cartData.subscribe((items) => {
+      this.cartItems = items.length
+    })
   }
   logOut() {
     localStorage.removeItem('seller')

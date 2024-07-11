@@ -25,7 +25,7 @@ export class CartComponent {
   ngOnInit(): void {
     if (!this.isLoggedIn) {
       this.snackBar.open('Want to see the cart? Please log in first.', 'Close', {
-        duration: 3000, 
+        duration: 5000, 
       });
       this.router.navigate(['/user-auth']);
     } else {
