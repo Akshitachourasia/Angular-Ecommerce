@@ -12,7 +12,7 @@ export class SellersService {
   constructor(private http: HttpClient, private router: Router) { }
 
   userSignUp(data: Signup) {
-    this.http.post('https://ecommerce-backend-git-master-akshita-s-projects.vercel.app/users', data, {
+    this.http.post('http://localhost:4545/users', data, {
       observe: 'response'
     }).subscribe((result) => {
       this.isSellerLoggedIn.next(true);
@@ -29,7 +29,7 @@ export class SellersService {
   }
   userLogin(data: Login) {
     console.log(data);
-    this.http.get(`https://ecommerce-backend-git-master-akshita-s-projects.vercel.app/users/login?email=${data.email}&password=${data.password}`,
+    this.http.get(`http://localhost:4545/users/login?email=${data.email}&password=${data.password}`,
        {
       observe: 'response'
     }).subscribe((result) => {
