@@ -71,7 +71,7 @@ export class ProductService {
       }
     })
   }
-  removeToCart(cartId: string) {
+  removeToCart(cartId: string|undefined) {
     return this.http.delete(`http://localhost:4545/cart/${cartId}`)
   }
   currentCart() {

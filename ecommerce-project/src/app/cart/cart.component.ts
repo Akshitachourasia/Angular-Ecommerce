@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 })
 export class CartComponent {
   cartData: Cart[] | undefined
-
   summary: Summary = {
     amount: 0,
     tax: 0,
@@ -20,8 +19,14 @@ export class CartComponent {
     discount: 0,
     total: 0
   }
-  constructor(private Product: ProductService, private router: Router) {}
+  constructor(private Product: ProductService, private router: Router) { }
   ngOnInit(): void {
+    this.loadDetails()
+  }
+  checkout() {
+    this.router.navigate(['/checkout'])
+  }
+  loadDetails() {
     this.Product.currentCart().subscribe((result) => {
       this.cartData = result
       let amt = 0;
@@ -36,13 +41,15 @@ export class CartComponent {
       this.summary.discount = amt / 10;
       this.summary.tax = amt / 10;
       this.summary.total = parseFloat((amt + 100 + (amt / 10) - (amt / 10)).toFixed(2));
-
+      if (!this.cartData.length) {
+        this.router.navigate(['/'])
+      }
     })
-  
-
   }
-  checkout() {
-    this.router.navigate(['/checkout'])
+  removeToCart(cartId: string | undefined) {
+    cartId && this.cartData && this.Product.removeToCart(cartId).subscribe((result) => {
+      this.loadDetails()
+    })
 
   }
 }
