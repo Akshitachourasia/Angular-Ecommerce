@@ -11,11 +11,23 @@ import { CommonModule } from '@angular/common';
 })
 export class MyOrdersComponent {
   orderData: order[] | undefined
+  orderMessage: string = ""
   constructor(private Product: ProductService) { }
   ngOnInit(): void {
+    this.getOrderList()
+  }
+  cancelOrder(_id?: string): void {
+    if (_id) {
+      this.Product.cancelOrder(_id).subscribe(() => {
+        this.getOrderList();
+      });
+    } else {
+      console.error('Order ID is undefined');
+    }
+  }
+  getOrderList() {
     this.Product.orderList().subscribe((result) => {
       this.orderData = result
     })
   }
-
 }

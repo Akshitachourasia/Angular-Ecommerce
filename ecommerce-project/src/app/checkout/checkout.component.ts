@@ -40,8 +40,6 @@ export class CheckoutComponent {
       alert("Order Placed...!!")
       this.router.navigate(['/my-order'])
     })
-   
-    
         this.Product.deleteAllCart().subscribe((result)=>{
           this.cartData=result
           console.log()

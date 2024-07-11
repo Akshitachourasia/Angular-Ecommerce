@@ -245,6 +245,16 @@ app.get('/order/:userId', async (req, res) => {
         console.log(error)
     }
 })
+
+app.delete('/order/:_id', async (req, res) => {
+    try {
+        const order = await Order.findByIdAndDelete(req.params._id);
+        res.send(order);
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 app.delete('/cart', async (req, res) => {
     try {
         await Cart.deleteMany({});

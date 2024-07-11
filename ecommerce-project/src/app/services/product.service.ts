@@ -91,4 +91,7 @@ export class ProductService {
   deleteAllCart(){
     return this.http.delete<Cart[]>('http://localhost:4545/cart')
   }
+  cancelOrder(_id: string){
+    return this.http.delete(`http://localhost:4545/order/${_id}`)
+  }
 }
