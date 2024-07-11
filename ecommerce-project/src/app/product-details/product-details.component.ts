@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../services/product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Cart, Product } from '../data-types';
 import { CommonModule } from '@angular/common';
 
@@ -16,7 +16,8 @@ export class ProductDetailsComponent {
   productQuantity: number = 1;
   removeCart = false;
   cartData: Product | undefined;
-  constructor(private activeRoute: ActivatedRoute, private Product: ProductService) { }
+  totalAmount: number | undefined;
+  constructor(private activeRoute: ActivatedRoute, private Product: ProductService, private router: Router) { }
 
   ngOnInit(): void {
     let productId = this.activeRoute.snapshot.paramMap.get('productId');
@@ -85,9 +86,9 @@ export class ProductDetailsComponent {
     if (!localStorage.getItem('user')) {
       this.Product.removeFromCart(productId)
     } else {
-      let user= localStorage.getItem('user')
+      let user = localStorage.getItem('user')
       let userId = user && JSON.parse(user)._id;
-      
+
       console.log(this.cartData)
       this.cartData && this.Product.removeToCart(this.cartData._id).subscribe((result) => {
         if (result) {
@@ -97,6 +98,10 @@ export class ProductDetailsComponent {
       this.removeCart = false
     }
 
+  }
+  buyNow() {
+    this.AddToCart()
+    this.router.navigate(['/cart']);
   }
 
 }

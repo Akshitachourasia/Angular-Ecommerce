@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class CheckoutComponent {
   totalAmount: number | undefined
-  cartData: Cart[]|undefined
+  cartData: Cart[] | undefined
   constructor(private Product: ProductService, private router: Router) { }
   ngOnInit(): void {
     this.Product.currentCart().subscribe((result) => {
@@ -40,10 +40,10 @@ export class CheckoutComponent {
       alert("Order Placed...!!")
       this.router.navigate(['/my-order'])
     })
-        this.Product.deleteAllCart().subscribe((result)=>{
-          this.cartData=result
-          console.log()
-        })
+    this.Product.deleteAllCart().subscribe((result) => {
+      this.cartData = result
+      console.log()
+    })
   }
-   
+
 }

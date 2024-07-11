@@ -2,16 +2,18 @@ import { Component } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { Cart, Summary } from '../data-types';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })
 export class CartComponent {
   cartData: Cart[] | undefined
+  isLoggedIn: boolean = false;
   summary: Summary = {
     amount: 0,
     tax: 0,
@@ -19,9 +21,16 @@ export class CartComponent {
     discount: 0,
     total: 0
   }
-  constructor(private Product: ProductService, private router: Router) { }
+  constructor(private Product: ProductService, private router: Router, private snackBar: MatSnackBar) { }
   ngOnInit(): void {
-    this.loadDetails()
+    if (!this.isLoggedIn) {
+      this.snackBar.open('Want to see the cart? Please log in first.', 'Close', {
+        duration: 3000, 
+      });
+      this.router.navigate(['/user-auth']);
+    } else {
+      this.loadDetails();
+    }
   }
   checkout() {
     this.router.navigate(['/checkout'])
@@ -35,7 +44,6 @@ export class CartComponent {
           amt = amt + (+items.price * + items.quantity)
         }
       });
-      console.log(amt)
       this.summary.amount = amt;
       this.summary.delivery = 100
       this.summary.discount = amt / 10;
