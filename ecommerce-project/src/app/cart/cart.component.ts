@@ -23,14 +23,15 @@ export class CartComponent {
   }
   constructor(private Product: ProductService, private router: Router, private snackBar: MatSnackBar) { }
   ngOnInit(): void {
-    if (!this.isLoggedIn) {
-      this.snackBar.open('Want to see the cart? Please log in first.', 'Close', {
-        duration: 5000, 
-      });
-      this.router.navigate(['/user-auth']);
-    } else {
-      this.loadDetails();
-    }
+    // if (!this.isLoggedIn) {
+    //   this.snackBar.open('Want to see the cart? Please log in first.', 'Close', {
+    //     duration: 5000, 
+    //   });
+    //   this.router.navigate(['/user-auth']);
+    // } else {
+    //   this.loadDetails();
+    // }
+    this.loadDetails()
   }
   checkout() {
     this.router.navigate(['/checkout'])

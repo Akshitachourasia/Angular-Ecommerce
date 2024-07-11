@@ -1,26 +1,27 @@
+
 {
     "version": 2,
     "builds": [
-        {
-            "src": "index.js",
-            "use": "@vercel/node"
-        }
+      {
+        "src": "frontend/angular.json",
+        "use": "@vercel/static-build",
+        "config": { "distDir": "dist/ecommerce-project" }
+      },
+      {
+        "src": "backend/server.js",
+        "use": "@vercel/node"
+      }
     ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/",
-            "methods": [
-                "GET",
-                "POST",
-                "PUT",
-                "DELETE",
-                "PATCH",
-                "OPTIONS"
-            ],
-            "headers": {
-                "Access-Control-Allow-Origin": ""
-            }
-        }
+      {
+        "src": "/api/(.*)",
+        "dest": "/backend/server.js"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/frontend/dist/ecommerce-project/$1",
+        "headers": { "Cache-Control": "s-maxage=1, stale-while-revalidate" }
+      }
     ]
-}
+  }
+  
